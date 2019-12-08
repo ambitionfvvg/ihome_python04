@@ -55,7 +55,7 @@ def create_app(config_name):
     # 利用flask-session，将session数据保存到redis中
     Session(app)
 
-    # 为flask补充csrf防护
+    # 为flask补充csrf防护..
     CSRFProtect(app)
 
     # 为flask添加自定义的转换器
