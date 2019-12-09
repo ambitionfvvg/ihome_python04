@@ -11,3 +11,20 @@ class ReConverter(BaseConverter):
         super(ReConverter, self).__init__(url_map)
         # 保存正则表达式
         self.regex = regex
+
+
+# xrange
+def xrange(start, end=None, step=1):
+    if end is None:
+        end = start
+        start = 0
+    if step > 0:
+        while start < end:
+            yield start
+            start += step
+    elif step < 0:
+        while start > end:
+            yield start
+            start += step
+    else:
+        return 'step can not be zero'
