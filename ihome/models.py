@@ -3,7 +3,7 @@
 from datetime import datetime
 # from ihome import constants
 from . import db
-
+from werkzeug.security import generate_password_hash,check_password_hash
 
 class BaseModel(object):
     """模型基类，为每个模型补充创建时间与更新时间"""
@@ -26,6 +26,17 @@ class User(BaseModel, db.Model):
     avatar_url = db.Column(db.String(128))  # 用户头像路径
     houses = db.relationship("House", backref="user")  # 用户发布的房屋
     orders = db.relationship("Order", backref="user")  # 用户下的订单
+
+    @property
+    def password(self):
+        raise AttributeError("不可读")
+
+    @password.setter
+    def password(self, passwd):
+        self.password_hash = generate_password_hash(passwd)
+
+    def check_password(self, passwd):
+        return check_password_hash(self.password_hash, passwd)
 
 
 class Area(BaseModel, db.Model):

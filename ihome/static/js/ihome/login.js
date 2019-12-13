@@ -24,5 +24,33 @@ $(document).ready(function() {
             $("#password-err").show();
             return;
         }
+
+        // 将数据放到data中
+        var data = {
+            mobile: mobile,
+            password: passwd
+        };
+        // 将data转换成json格式
+        var jsonData = JSON.stringify(data);
+        // 发起ajax请求
+        $.ajax({
+            url: '/api/v1.0/sessions',
+            type: 'post',
+            data: jsonData,
+            contentType: 'application/json',
+            dataType: 'json',
+            headers: {
+                'X-CSRFToken': getCookie('csrf_token')
+            },
+            success: function (resp) {
+                if (resp.errno == '0') {
+                    location.href = 'index.html'
+                } else {
+                    $("#password-err span").html(resp.errmsg);
+                    $("#password-err").show();
+                }
+            }
+
+        })
     });
 })

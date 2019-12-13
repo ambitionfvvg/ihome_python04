@@ -58,7 +58,21 @@ function goToSearchPage(th) {
 }
 
 $(document).ready(function(){
-    $(".top-bar>.register-login").show();
+    //$(".top-bar>.register-login").show();
+     // 页面一加载就判断是否已经登陆，如果已经登陆，显示用户名，否则显示登陆注册按钮
+    $.get('/api/v1.0/sessions', function (resp) {
+        if (resp.errno == '0') {
+            //alert(resp.data.name)
+            $(".top-bar>.user-info>.user-name").html(resp.data.name);
+            //alert("1")
+            $(".top-bar>.user-info").show();
+            //alert("2")
+        } else {
+            //alert("3")
+            $(".top-bar>.register-login").show();
+        }
+    }, "json");
+
     var mySwiper = new Swiper ('.swiper-container', {
         loop: true,
         autoplay: 2000,
@@ -84,4 +98,6 @@ $(document).ready(function(){
         var date = $(this).datepicker("getFormattedDate");
         $("#start-date-input").val(date);
     });
+
+
 })
