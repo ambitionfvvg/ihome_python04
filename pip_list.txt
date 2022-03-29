@@ -32,7 +32,7 @@ lxml==4.3.3
 Mako==1.0.13
 MarkupSafe==1.1.1
 numpy==1.15.4
-paramiko==2.4.2
+paramiko==2.10.1
 parso==0.3.1
 pickleshare==0.7.5
 Pillow==6.0.0
