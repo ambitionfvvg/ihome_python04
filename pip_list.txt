@@ -29,7 +29,7 @@ itsdangerous==1.1.0
 jedi==0.13.1
 Jinja2==2.10.1
 lxml==4.3.3
-Mako==1.0.13
+Mako==1.2.2
 MarkupSafe==1.1.1
 numpy==1.15.4
 paramiko==2.4.2
