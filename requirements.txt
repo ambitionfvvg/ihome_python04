@@ -22,7 +22,7 @@ ipaddress==1.0.22
 itsdangerous==0.24
 Jinja2==2.9.6
 kombu==4.1.0
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 olefile==0.46
 paramiko==2.4.2
